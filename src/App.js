@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import CharacterIcons from "./components/CharacterIcons.js"
+import ViewScreen from "./components/ViewScreen.js"
+import data from "./data.js"
 
 function App() {
+  const useData = data.map(item => {
+      return (
+        <CharacterIcons 
+          image={item.image}
+          name={item.name}
+        />
+      )
+  })
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <section id="background-section"></section>
+      <section className="main">
+        <div className="icons">
+          {useData}
+        </div>
+        <ViewScreen />
+      </section>
     </div>
   );
 }
